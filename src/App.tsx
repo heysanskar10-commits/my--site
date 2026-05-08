@@ -1,5 +1,5 @@
 
-import { 
+import {
   Download, ExternalLink,
   Monitor, Smartphone, PenTool, Database, Code, Layout,
   Briefcase
@@ -116,15 +116,15 @@ function App() {
           <h2 className="section-title">My <span className="font-bold">Projects</span></h2>
           <div className="container">
             {[
-              { 
-                num: '01', 
-                title: 'Crypto Dashboard UI', 
+              {
+                num: '01',
+                title: 'Crypto Dashboard UI',
                 desc: 'A high-fidelity dark mode dashboard for tracking cryptocurrency portfolios. Built with React and Recharts, featuring real-time data updates and interactive graphs.',
                 img: '/project1.png'
               },
-              { 
-                num: '02', 
-                title: 'Minimal E-Commerce', 
+              {
+                num: '02',
+                title: 'Minimal E-Commerce',
                 desc: 'A clean, aesthetic e-commerce platform designed for a premium shopping experience. Features seamless cart management and integration with Stripe API.',
                 img: '/project2.png'
               }
@@ -191,29 +191,40 @@ function App() {
           <div className="container contact-container">
             <div>
               <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1rem' }}>
-                Let's talk for <br/>Something special
+                Let's talk for <br />Something special
               </h2>
               <p style={{ color: '#A1A1AA', marginBottom: '3rem' }}>
                 I seek to push the limits of web development and create digital products that leave a lasting impact. Let's build something great together.
               </p>
-              
+
               <div className="contact-info">
                 <div className="info-item">
                   <h4>Email</h4>
-                  <p>sanskar@example.com</p>
+                  <p>heysanskar10@gmail.com</p>
                 </div>
                 <div className="info-item">
                   <h4>Phone</h4>
-                  <p>+91 12345 67890</p>
+                  <p>+91 9113198480</p>
                 </div>
               </div>
             </div>
-            
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" placeholder="Your Name" />
-              <input type="email" placeholder="Email Address" />
-              <input type="text" placeholder="Website (Optional)" />
-              <textarea placeholder="How can I help you?"></textarea>
+
+            <form
+              className="contact-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const website = formData.get('website');
+                const message = formData.get('message');
+                window.location.href = `mailto:heysanskar10@gmail.com?subject=Portfolio Contact from ${name}&body=${message}%0A%0AContact Details:%0AName: ${name}%0AEmail: ${email}%0AWebsite: ${website}`;
+              }}
+            >
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Email Address" required />
+              <input type="text" name="website" placeholder="Website (Optional)" />
+              <textarea name="message" placeholder="How can I help you?" required></textarea>
               <button type="submit" className="btn btn-primary" style={{ background: '#FFF', color: '#000', marginTop: '1rem' }}>
                 Get In Touch
               </button>
